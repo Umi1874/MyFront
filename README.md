@@ -1,2 +1,2 @@
 # MyVue
-MyVue_Demo
+This is My Vue.Js Study Record Repository
