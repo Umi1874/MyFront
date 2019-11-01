@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Demo1</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <style>
+        div {
+            width: 500px;
+            margin: 30px auto;
+        }
+
+        .edit {
+            display: block;
+            line-height: 35px;
+            box-sizing: border-box;
+            padding-left: 20px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+            box-shadow: 0 0 5px #ccc;
+        }
+
+        .task li {
+            position: relative;
+            padding: 10px 0;
+            border-bottom: 1px solid #efefef;
+            list-style: none;
+        }
+
+        .task li:last-child {
+            border-bottom: 0;
+        }
+
+        .finish {
+            text-decoration: line-through;
+            color: #ccc;
+        }
+
+        .del {
+            background: red;
+            text-decoration: none;
+            position: absolute;
+            right: 0;
+            font-size: 12px;
+            border: 0;
+            outline: 0;
+            padding: 2px 5px;
+            border-radius: 5px;
+            color: #fff;
+        }
+
+        .empty {
+            font-size: 13px;
+            color: #000;
+            text-align: center;
+            padding: 10px 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <p>Use The v-model And So On</p>
+        <input type="text" placeholder="edit something" class="edit" autofocus v-model="items.content"
+            @keydown.enter="addTask">
+        <ul class="task">
+            <li v-for="(item,index) in list" :key="index">
+                <input type="checkbox" @click="changeState(index)" :checked="item.finished">
+                <span :class="{'finish':item.finished}">{{item.content}}</span>
+                <button @click="removeList(index)" class="del">del</button>
+            </li>
+        </ul>
+        <p class="empty" v-if="list.length===0">Empty</p>
+    </div>
+</body>
+<script type="text/javascript">
+    var App = new Vue({
+        el: "#app",
+        data: {
+            items: {
+                content: "",
+                finished: false,
+                deleted: false
+            },
+            list: []
+        },
+        methods: {
+            addTask() {
+                this.list.push(this.items);
+                this.items = {
+                    content: "",
+                    finished: false,
+                    deleted: false
+                }
+            },
+            changeState(index) {
+                let curState = this.list[index].finished;
+                this.list[index].finished = !curState;
+            },
+            removeList(index) {
+                this.list.splice(index, 1);
+            }
+        }
+    });
+</script>
+
+</html>
