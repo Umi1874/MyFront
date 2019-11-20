@@ -5,11 +5,11 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
-  <link href="/lib/jquery-ui.css" rel="stylesheet">
-  <script src="/lib/jquery.min.js" type="text/javascript"></script>
-  <script src="/lib/harmony.js" type="text/javascript"></script>
-  <script src="/lib/harmony-ui.js" type="text/javascript"></script>
-  <script src="/lib/jquery-ui.min.js" type="text/javascript"></script>
+  <link rel="stylesheet" href="./css/jquery-ui.min.css">
+  <script src="http://common.mastersoftgroup.com/scripts/harmony-1.6.6.min.js" type="text/javascript"></script>
+  <script src="http://common.mastersoftgroup.com/scripts/harmony-ui-1.6.6.min.js" type="text/javascript"></script>
+  <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.9.0.min.js" type="text/javascript"></script>
+  <script src="./js/jquery-ui.min.js" type="text/javascript"></script>
   <title>my-vue-app</title>
 </head>
 
@@ -18,29 +18,25 @@
     <strong>We're sorry but my-vue-app doesn't work properly without JavaScript enabled. Please enable it to
       continue.</strong>
   </noscript>
-  <!-- <div id="app"></div> -->
-  <span>My Test</span>
-  <input type="text" id="siteAddress" size="40" />
+  <div id="app">
+  </div>
   <!-- built files will be auto injected -->
 </body>
-
 <script type="text/javascript">
-  $(function () {
-    // Use the Production environment
-    Harmony.useEnv(Harmony.ENV_PRODUCTION);
-
-    Harmony.init("globirdenergyuser", "CUr8eT1maauoQXvozod7jPTroWTVzhvA", Harmony.AUSTRALIA);
-
-    var address
-    // Use the JSONP protocol
-    Harmony.useProtocol(Harmony.JSONP);
-    var opt = {
-      minLength: 3,
-      // skip transaction call when address selected. You need to make your own call depending on your business flow.
-      skipTransaction: false
-      };
-    Harmony.UI.addressLookup($("#siteAddress"), "AUPAF", opt);
-  });
+// Use the Production environment
+Harmony.useEnv(Harmony.ENV_PRODUCTION);
+Harmony.init(
+  "globirdenergyuser",
+  "CUr8eT1maauoQXvozod7jPTroWTVzhvA",
+  Harmony.AUSTRALIA
+);
+// Use the JSONP protocol
+Harmony.useProtocol(Harmony.JSONP);
+var opt = {
+  minLength: 3,
+  // skip transaction call when address selected. You need to make your own call depending on your business flow.
+  skipTransaction: false
+};
+Harmony.UI.addressLookup($("#siteAddress"), "AUPAF", opt);
 </script>
-
 </html>
