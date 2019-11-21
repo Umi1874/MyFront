@@ -1,7 +1,5 @@
-import '@/assets/harmony-1.6.6.min.js'
-import '@/assets/harmony-ui-1.6.6.min.js'
-import '@/assets/jquery-ui.min.js'
-import '@/assets/jquery.min.js'
+import Harmony from '@/assets/harmony-1.6.6.min.js'
+import $ from '@/assets/jquery.min.js'
 
 export function addressService() {
       // Use the Production environment
@@ -14,5 +12,5 @@ export function addressService() {
         // skip transaction call when address selected. You need to make your own call depending on your business flow.
         skipTransaction: false
       };
-      Harmony.UI.addressLookup($("#siteAddress"), "AUPAF", opt);
+      Harmony.UI.addressLookup($("#siteAddress2"), "AUPAF", opt);
 }
