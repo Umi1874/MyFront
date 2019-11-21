@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Storage</title>
+</head>
+
+<body>
+    <input type="text">
+    <button>set</button>
+    <button>get</button>
+    <button>update</button>
+    <button>del</button>
+    <button>clear</button>
+    <hr>
+    <label for="">
+        用户名：<input type="text" class="userName" />
+    </label>
+    <br /><br />
+    <label for="">
+        密 码：<input type="text" class="pwd" />
+    </label>
+    <br /><br />
+    <label for="">
+        <input type="checkbox" class="check" id="" />记住密码
+    </label>
+    <br /><br />
+    <button onclick="login()">登录</button>
+</body>
+<script>
+    /* h5 have two method for storage 
+    1. sessionStorage For This Session
+    2. localStorage 20M
+    below is sessionStorage Demo ,The local is the same use with it
+    */
+    var txt = document.querySelector('input')
+    var btn = document.querySelectorAll('button')
+
+    btn[0].onclick = function () {
+        window.sessionStorage.setItem('userName', txt.value)
+        window.sessionStorage.setItem('psw', '123456')
+        window.sessionStorage.setItem('age', '18')
+    }
+
+    btn[1].onclick = function () {
+        txt.value = window.sessionStorage.getItem('userName')
+    }
+
+    btn[2].onclick = function () {
+        window.sessionStorage.setItem('userName', txt.value)
+    }
+
+    btn[3].onclick = function () {
+        window.sessionStorage.removeItem('userName')
+    }
+
+    btn[4].onclick = function () {
+        window.sessionStorage.clear()
+    }
+</script>
+<script>
+    var username = document.querySelector('.userName')
+    var password = document.querySelector('.pwd')
+    var remember = document.querySelector('.check')
+    function login(){
+        if (remember.checked) {
+            window.localStorage.setItem('userName', username.value)
+            window.localStorage.setItem('pwd', password.value)
+        } else {
+            window.localStorage.removeItem('userName')
+            window.localStorage.removeItem('pwd')
+        }
+    }
+
+    window.onload = function () {
+        username.value = window.localStorage.getItem('userName')
+        password.value = window.localStorage.getItem('pwd')
+    }
+</script>
+
+</html>
