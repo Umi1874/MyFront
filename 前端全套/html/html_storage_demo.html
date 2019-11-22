@@ -65,7 +65,7 @@
     var username = document.querySelector('.userName')
     var password = document.querySelector('.pwd')
     var remember = document.querySelector('.check')
-    function login(){
+    function login() {
         if (remember.checked) {
             window.localStorage.setItem('userName', username.value)
             window.localStorage.setItem('pwd', password.value)

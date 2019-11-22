@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>jQuery</title>
+</head>
+
+<body>
+    <div></div>
+    <div class="box"></div>
+    <div id="box"></div>
+    <div class="box"></div>
+    <div></div>
+    <ul>
+        <li>111</li>
+        <li>222</li>
+        <li>333</li>
+        <ol>
+            <li>aaa</li>
+            <li>bbb</li>
+            <li>ccc</li>
+        </ol>
+    </ul>
+</body>
+<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.js"></script>
+<script type="text/javascript">
+    $(function () {
+        var jBox1 = $('#box')
+        var jBox2 = $('.box')
+        var jBox3 = $('div')
+
+        jBox3.css('width', 100)
+        jBox3.css('height', 100)
+        jBox3.css('margin', 10)
+        jBox3.css("background", "pink")
+
+        jBox2.css('background', 'red')
+        jBox1.css('background', 'yellow')
+
+        var jLi = $('ul li')
+        jLi.css("margin", 5);
+        jLi.css("background", "pink");
+
+        var jqOtherLi = $("ul>li");
+        jqOtherLi.css("background", "red");
+    })
+</script>
+
+</html>
