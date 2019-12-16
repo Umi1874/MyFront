@@ -1,0 +1,14 @@
+{
+  "name": "mydemo",
+  "version": "1.0.0",
+  "description": "no description",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "umi1874",
+  "license": "MIT",
+  "dependencies": {
+    "uniq": "^1.0.1"
+  }
+}
