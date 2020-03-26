@@ -6,19 +6,18 @@ const defaultTime = {
 
 App({
   onLaunch: function() {
-    // 展示本地存储能力
     let workTime = wx.getStorageSync('workTime')
     let restTime = wx.getStorageSync('restTime')
-    if(!workTime) {
+    if (!workTime) {
       wx.setStorage({
         key: 'workTime',
-        data: defaultTime.defaultWorkTime,
+        data: defaultTime.defaultWorkTime
       })
     }
-    if(!restTime){
+    if (!restTime) {
       wx.setStorage({
         key: 'restTime',
-        data: defaultTime.defaultRestTime,
+        data: defaultTime.defaultRestTime
       })
     }
   }

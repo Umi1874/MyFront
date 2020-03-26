@@ -1,23 +1,20 @@
 const util = require('../../utils/util.js')
 const defaultLogName = {
-  work: 'Work',
-  rest: 'Rest'
+  work: '工作',
+  rest: '休息'
 }
 const actionName = {
-  stop: 'stop',
-  start: 'start'
+  stop: '停止',
+  start: '开始'
 }
 
 const initDeg = {
   left: 45,
-  right: -45
+  right: -45,
 }
 
 Page({
 
-  /**
-   * 页面的初始数据
-   */
   data: {
     remainTimeText: '',
     timerType: 'work',
@@ -27,10 +24,8 @@ Page({
     leftDeg: initDeg.left,
     rightDeg: initDeg.right
   },
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
+
+  onShow: function() {
     if (this.data.isRuning) return
     let workTime = util.formatTime(wx.getStorageSync('workTime'), 'HH')
     let restTime = util.formatTime(wx.getStorageSync('restTime'), 'HH')
@@ -40,15 +35,17 @@ Page({
       remainTimeText: workTime + ':00'
     })
   },
-  startTimer: function (e) {
+
+  startTimer: function(e) {
     let startTime = Date.now()
     let isRuning = this.data.isRuning
     let timerType = e.target.dataset.type
     let showTime = this.data[timerType + 'Time']
     let keepTime = showTime * 60 * 1000
     let logName = this.logName || defaultLogName[timerType]
+
     if (!isRuning) {
-      this.timer = setInterval((function () {
+      this.timer = setInterval((function() {
         this.updateTimer()
         this.startNameAnimation()
       }).bind(this), 1000)
@@ -76,7 +73,7 @@ Page({
     this.saveLog(this.data.log)
   },
 
-  startNameAnimation: function () {
+  startNameAnimation: function() {
     let animation = wx.createAnimation({
       duration: 450
     })
@@ -87,7 +84,7 @@ Page({
     })
   },
 
-  stopTimer: function () {
+  stopTimer: function() {
     // reset circle progress
     this.setData({
       leftDeg: initDeg.left,
@@ -98,17 +95,7 @@ Page({
     this.timer && clearInterval(this.timer)
   },
 
-  changeLogName: function (e) {
-    this.logName = e.detail.value
-  },
-
-  saveLog: function (log) {
-    var logs = wx.getStorageSync('logs') || []
-    logs.unshift(log)
-    wx.setStorageSync('logs', logs)
-  },
-
-  updateTimer: function () {
+  updateTimer: function() {
     let log = this.data.log
     let now = Date.now()
     let remainingTime = Math.round((log.endTime - now) / 1000)
@@ -145,5 +132,15 @@ Page({
         rightDeg: initDeg.right - (180 * (now - (log.startTime + halfTime)) / halfTime)
       })
     }
+  },
+
+  changeLogName: function(e) {
+    this.logName = e.detail.value
+  },
+
+  saveLog: function(log) {
+    var logs = wx.getStorageSync('logs') || []
+    logs.unshift(log)
+    wx.setStorageSync('logs', logs)
   }
 })
