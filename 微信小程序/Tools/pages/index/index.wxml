@@ -1,0 +1,19 @@
+<!-- index.wxml -->
+<view class="container">
+  <view class="weui-cells__title">输入10位Nmi</view>
+  <view class="weui-cells weui-cells_after-title">
+    <view class="weui-cell weui-cell_input">
+      <input type="text" value="{{ nmi }}" class="weui-input" 
+      maxlength="10" 
+      bindinput="inputedit" 
+      date-name="nmi" />
+    </view>
+  </view>
+  <button type="primary" bindtap="CalculateCheckSum" 
+  hover-class="other-button-hover">
+    Confirm
+  </button>
+  <view>
+    <text>Check Sum is {{ checkSum }}</text>
+  </view>
+</view>
